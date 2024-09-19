@@ -19,9 +19,12 @@ from PIL import Image
 import gensim
 from gensim import corpora
 
+nltk.download('all')
 # Download NLTK data
 nltk.download('punkt')
 nltk.download('stopwords')
+nltk.download('averaged_perceptron_tagger')  # Add this if needed for POS tagging
+
 
 # Set page configuration
 st.set_page_config(page_title="Ghana Decides 2024", layout="wide")
