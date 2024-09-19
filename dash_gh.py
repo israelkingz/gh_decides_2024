@@ -611,17 +611,17 @@ else:
         st.subheader('Sentiment on Key Issues')
         issue_sentiment = df_filtered.groupby('Issue')['sentiment_score'].mean().reset_index()
         fig_issue = px.bar(issue_sentiment, x='Issue', y='sentiment_score', title='Sentiment by Issues',
-                       color='Sentiment_Score', color_continuous_scale='RdBu')
+                       color='sentiment_score', color_continuous_scale='RdBu')
         st.plotly_chart(fig_issue, use_container_width=True)
         # Areas for Improvement
         st.subheader('Areas of Improvement')
 
             # Get the issues with the lowest sentiment scores
-        lowest_sentiment_issues = df_filtered.groupby('Issue')['Sentiment_Score'].mean().nsmallest(3).reset_index()
+        lowest_sentiment_issues = df_filtered.groupby('Issue')['sentiment_score'].mean().nsmallest(3).reset_index()
 
         st.write('Based on the sentiment analysis, here are the areas that need improvement:')
         for index, row in lowest_sentiment_issues.iterrows():
-                st.write(f"- **{row['Issue']}** with an average sentiment score of {row['Sentiment_Score']:.2f}")
+                st.write(f"- **{row['Issue']}** with an average sentiment score of {row['sentiment_score']:.2f}")
 
             # Provide some generic recommendations for improvement
         st.write('Recommendations for improvement:')
